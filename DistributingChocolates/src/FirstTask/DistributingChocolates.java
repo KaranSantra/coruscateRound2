@@ -62,9 +62,9 @@ public class DistributingChocolates {
             chocolatesLeftFromMaxValueOfK = noOfChocolates - ceilingSum;
             chocolatesLeftFromMinValueOfK = noOfChocolates - floorSum;
 
-            System.out.println("k is " + k);
-            System.out.println(ceilingSum + "<<<< ceiling Sum ------ floorSum >>>>>>>>>" + floorSum);
-            System.out.println(chocolatesLeftFromMaxValueOfK + "<<<< ceiling left ------ floorLeft >>>>>>>>>" + chocolatesLeftFromMinValueOfK);
+//            System.out.println("k is " + k);
+//            System.out.println(ceilingSum + "<<<< ceiling Sum ------ floorSum >>>>>>>>>" + floorSum);
+//            System.out.println(chocolatesLeftFromMaxValueOfK + "<<<< ceiling left ------ floorLeft >>>>>>>>>" + chocolatesLeftFromMinValueOfK);
 
             if (chocolatesLeftFromMaxValueOfK < 0) {
                 setMinNoOfChocolateLeft(chocolatesLeftFromMinValueOfK);
