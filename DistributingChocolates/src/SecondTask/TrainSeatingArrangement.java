@@ -50,7 +50,7 @@ public class TrainSeatingArrangement {
                     columnNo++;
                     if (passengerSeatNumber == j) {
                         int row = i + 1;
-
+                        
                         calculateFrontSeat(row, columnNo);
                     }
                 }
@@ -60,11 +60,13 @@ public class TrainSeatingArrangement {
 
     private void calculateFrontSeat(int row, int columnNo) {
         int addOrSubtractableValue = getAddOrSubtractableValue(columnNo);
+        System.out.println("add or sub = " +addOrSubtractableValue);
         if(row%2!=0){//for odd rows
             seatNumberFacingPassenger=passengerSeatNumber+addOrSubtractableValue;
         }else{
             seatNumberFacingPassenger=passengerSeatNumber-addOrSubtractableValue;
         }
+        System.out.println(seatNumberFacingPassenger);
     }
 
     private int getAddOrSubtractableValue(int columnNo) {

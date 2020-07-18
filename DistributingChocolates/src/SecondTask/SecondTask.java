@@ -11,6 +11,9 @@ package SecondTask;
  */
 public class SecondTask {
     public static void main(String[] args) {
-        
+        TrainSeatingArrangement seatingArrangement=new TrainSeatingArrangement();
+        seatingArrangement.setPassengerSeatNumber(22);
+        seatingArrangement.findRowOfSeatNumber();
+                
     }
 }
