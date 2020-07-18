@@ -17,12 +17,12 @@ public class FirstTask {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        
         DistributingChocolates distributingChocolates = new DistributingChocolates();
         //Testing by giving input manually from main function
         distributingChocolates.setNoOfChocolates(13);
         distributingChocolates.setNoOfStudents(5);
         distributingChocolates.calculateMinimumNoOfChocolatesLeft();
+        System.out.println(distributingChocolates.getMinNoOfChocolateLeft());
     }
 
 }
