@@ -9,12 +9,13 @@ package SecondTask;
  *
  * @author karansantra
  */
-public class TrainSeatingArrangement {
+public class TrainSeat {
 
     private final int totalNoOfRows = 18;
     private int passengerSeatNumber;
     private int seatNumberFacingPassenger;
     private String seatType;
+    
 
     public int getPassengerSeatNumber() {
         return passengerSeatNumber;
@@ -39,34 +40,37 @@ public class TrainSeatingArrangement {
     public void setSeatType(String seatType) {
         this.seatType = seatType;
     }
+    
+    
 
-    public void findRowOfSeatNumber() {
+    public void calculateFrontSeatNoAndSeatType() {
         int i;
         for (i = 0; i < totalNoOfRows; i++) {
             if (passengerSeatNumber >= 6 * i + 1 && passengerSeatNumber <= 6 * i + 6) {
                 int rowStart = 6 * i + 1, rowEnd = 6 * i + 6;
-                int j, columnNo = 0;
+                int j,columnNo=0;
                 for (j = rowStart; j <= rowEnd; j++) {
                     columnNo++;
                     if (passengerSeatNumber == j) {
-                        int row = i + 1;
-
-                        calculateFrontSeat(row, columnNo);
+                        int row = i + 1;                        
+                        findRowOfSeatNumber(row, columnNo);
+                        findSeatType(columnNo);
                     }
                 }
             }
         }
     }
 
-    private void calculateFrontSeat(int row, int columnNo) {
+    private void findRowOfSeatNumber(int row,int columnNo) {
+        
         int addOrSubtractableValue = getAddOrSubtractableValue(columnNo, row);
-        System.out.println("add or sub = " + row);
+        
         if (row % 2 != 0) {//for odd rows
             seatNumberFacingPassenger = passengerSeatNumber + addOrSubtractableValue;
-        } else {
+        } else {// for even rows
             seatNumberFacingPassenger = passengerSeatNumber - addOrSubtractableValue;
         }
-        System.out.println(seatNumberFacingPassenger);
+       
     }
 
     private int getAddOrSubtractableValue(int columnNo, int row) {
@@ -74,6 +78,24 @@ public class TrainSeatingArrangement {
             return 13 - (2 * columnNo);
         }else{
              return 13 - (2 * (7-columnNo));
+        }
+    }
+    
+    public  void findSeatType(int columnNo){
+        
+        switch(columnNo){
+            case 1:
+            case 6:
+                setSeatType("WS");
+                break;
+            case 2:
+            case 5:
+                setSeatType("MS");
+                break;
+            case 3:
+            case 4:
+                setSeatType("AS");
+                break;                
         }
     }
 

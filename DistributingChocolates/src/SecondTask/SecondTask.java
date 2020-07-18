@@ -12,11 +12,11 @@ package SecondTask;
 public class SecondTask {
 
     public static void main(String[] args) {
-        TrainSeatingArrangement seatingArrangement = new TrainSeatingArrangement();
+        TrainSeat seatingArrangement = new TrainSeat();
         for (int i = 18; i >= 13; i--) {
             seatingArrangement.setPassengerSeatNumber(i);
-            seatingArrangement.findRowOfSeatNumber();
-
+            seatingArrangement.calculateFrontSeatNoAndSeatType();
+            System.out.println(seatingArrangement.getSeatNumberFacingPassenger()+seatingArrangement.getSeatType());
         }
 
     }
