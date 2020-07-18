@@ -46,6 +46,7 @@ public class TrainSeat {
     public void calculateFrontSeatNoAndSeatType() {
         int i;
         for (i = 0; i < totalNoOfRows; i++) {
+            //checking in which row the seat is present
             if (passengerSeatNumber >= 6 * i + 1 && passengerSeatNumber <= 6 * i + 6) {
                 int rowStart = 6 * i + 1, rowEnd = 6 * i + 6;
                 int j,columnNo=0;
@@ -53,17 +54,20 @@ public class TrainSeat {
                     columnNo++;
                     if (passengerSeatNumber == j) {
                         int row = i + 1;                        
-                        findRowOfSeatNumber(row, columnNo);
+                        findSeatNoFromRowAndColumn(row, columnNo);
                         findSeatType(columnNo);
                     }
                 }
+                break;
             }
         }
     }
 
-    private void findRowOfSeatNumber(int row,int columnNo) {
+    private void findSeatNoFromRowAndColumn(int row,int columnNo) {
         
         int addOrSubtractableValue = getAddOrSubtractableValue(columnNo, row);
+        //if seat is in odd rows adding this value gets you the frontSeatno
+        //else  adding this value gets you the frontSeat no
         
         if (row % 2 != 0) {//for odd rows
             seatNumberFacingPassenger = passengerSeatNumber + addOrSubtractableValue;
@@ -78,6 +82,7 @@ public class TrainSeat {
             return 13 - (2 * columnNo);
         }else{
              return 13 - (2 * (7-columnNo));
+             // 7-columnNo here because in even rows counting starts from the other side
         }
     }
     
