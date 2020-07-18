@@ -40,7 +40,23 @@ public class DistributingChocolates {
     }
 
     public void calculateMinimumNoOfChocolatesLeft() {
-        //do calculation here
+        
+        // k is the number of chocolate the first student recieves as given in the problem statement
+        //consecutive students receive k+1,k+2,...k+n
+        
+        //This equation finds the first term (k) of a sum of arithmetic progression of k,k+1...,k+n 
+        double k = (((2 * noOfChocolates) / noOfStudents) + 1 - noOfStudents) / 2.0;
+        int ceilingSum = 0, floorSum = 0;
+        int maxValueOfK = (int) Math.ceil(k);
+        int minValueOfK = (int) Math.floor(k);
+
+        for (int i = 0; i < 3; i++) {
+            ceilingSum += maxValueOfK + i;
+            floorSum += minValueOfK + i;
+        }
+        
+        System.out.println("k is " + k);
+        System.out.println(ceilingSum + "<<<< ceiling Sum ------ floorSum >>>>>>>>>" + floorSum);
     }
 
 }
