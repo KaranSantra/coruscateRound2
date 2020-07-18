@@ -40,5 +40,37 @@ public class TrainSeatingArrangement {
         this.seatType = seatType;
     }
 
+    public void findRowOfSeatNumber() {
+        int i;
+        for (i = 0; i < totalNoOfRows; i++) {
+            if (passengerSeatNumber >= 6 * i + 1 && passengerSeatNumber <= 6 * i + 6) {
+                int rowStart = 6 * i + 1, rowEnd = 6 * i + 6;
+                int j, columnNo = 0;
+                for (j = rowStart; j <= rowEnd; j++) {
+                    columnNo++;
+                    if (passengerSeatNumber == j) {
+                        int row = i + 1;
+
+                        calculateFrontSeat(row, columnNo);
+                    }
+                }
+            }
+        }
+    }
+
+    private void calculateFrontSeat(int row, int columnNo) {
+        int addOrSubtractableValue = getAddOrSubtractableValue(columnNo);
+        if(row%2!=0){//for odd rows
+            seatNumberFacingPassenger=passengerSeatNumber+addOrSubtractableValue;
+        }else{
+            seatNumberFacingPassenger=passengerSeatNumber-addOrSubtractableValue;
+        }
+    }
+
+    private int getAddOrSubtractableValue(int columnNo) {
+        return 13 - (2 * columnNo);
+    }
     
+    
+
 }
